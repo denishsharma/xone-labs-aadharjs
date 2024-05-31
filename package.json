@@ -1,42 +1,107 @@
 {
-  "name": "aadharjs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "lib/cjs/aadharjs.js",
-  "module": "lib/esm/aadharjs.js",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.js",
-    "dev": "rollup -c rollup.config.js -w"
-  },
-  "keywords": [],
-  "author": {
-    "email": "developer@xubikle.com",
-    "name": "Xubikle Development"
-  },
-  "maintainers": [
-    {
-      "email": "sharmamohinish67@gmail.com",
-      "name": "Mohinish Sharma"
+    "name": "aadharjs",
+    "version": "1.0.0",
+    "packageManager": "pnpm@9.1.2",
+    "description": "A utility library for Aadhaar (Indian Identity) related operations",
+    "author": {
+        "email": "developer@xubikle.com",
+        "name": "Xubikle Development"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xone-labs/aadharjs.git"
+    },
+    "bugs": {
+        "url": "https://github.com/xone-labs/aadharjs/issues"
+    },
+    "keywords": [
+        "aadharjs",
+        "utility",
+        "validation",
+        "aadhaar",
+        "decode"
+    ],
+    "sideEffects": false,
+    "exports": {
+        ".": {
+            "types": "./dist/lib/index.d.ts",
+            "import": "./dist/lib/index.mjs",
+            "require": "./dist/lib/index.cjs"
+        },
+        "./*": "./*"
+    },
+    "main": "./dist/lib/index.cjs",
+    "module": "./dist/lib/index.mjs",
+    "umd:main": "./dist/libg/aadharjs.umd.production.min.js",
+    "unpkg": "./dist/lib/aadharjs.umd.production.min.js",
+    "jsdelivr": "./dist/lib/aadharjs.umd.production.min.js",
+    "jsnext:main": "./dist/lib/index.mjs",
+    "types": "./dist/lib/index.d.ts",
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/lib/*",
+                "./dist/lib/index.d.ts"
+            ]
+        }
+    },
+    "source": "src/lib/index.ts",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "build": "unbuild",
+        "docs:build": "nuxi build docs",
+        "play": "jiti playground",
+        "dev": "vitest dev",
+        "docs:dev": "nuxi dev docs",
+        "lint": "eslint . --fix",
+        "prepare": "simple-git-hooks && pnpm build",
+        "prepublishOnly": "pnpm lint && pnpm test",
+        "release": "pnpm test && changelogen --release && gtt push --follow-tags && pnpm publish",
+        "prerelease": "pnpm test && changelogen --prerelease --release && gtt push --follow-tags && pnpm publish --tag rc",
+        "test": "pnpm lint && vitest run --coverage"
+    },
+    "maintainers": [
+        {
+            "email": "sharmamohinish67@gmail.com",
+            "name": "Mohinish Sharma"
+        },
+        {
+            "email": "denishcommon@gmail.com",
+            "name": "Denish Sharma"
+        }
+    ],
+    "devDependencies": {
+        "@antfu/eslint-config": "^2.19.1",
+        "@types/node": "^20.12.13",
+        "@vitest/coverage-v8": "^1.6.0",
+        "bumpp": "^9.4.1",
+        "changelogen": "^0.5.5",
+        "eslint": "^8.57.0",
+        "fflate": "^0.8.2",
+        "jiti": "^1.21.0",
+        "lint-staged": "^15.2.5",
+        "mutative": "^1.0.5",
+        "simple-git-hooks": "^2.11.1",
+        "typescript": "^5.4.5",
+        "unbuild": "^2.0.0",
+        "vitest": "^1.6.0"
+    },
+    "resolutions": {
+        "aadharjs": "link:."
+    },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm lint-staged"
+    },
+    "lint-staged": {
+        "*": [
+            "eslint . --fix"
+        ]
     }
-  ],
-  "license": "ISC",
-  "engines": {
-    "node": ">=12"
-  },
-  "dependencies": {
-    "pako": "^2.1.0"
-  },
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "@types/pako": "^2.0.3",
-    "rollup": "^2.56.3",
-    "tslib": "^2.6.2",
-    "typescript": "^5.4.4"
-  }
 }

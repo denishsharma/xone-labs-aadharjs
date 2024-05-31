@@ -1,22 +1,24 @@
 {
+    "compilerOptions": {
+        "target": "ES2015",
+        "lib": ["dom", "esnext"],
+        "baseUrl": ".",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "strict": true,
+        "declaration": true,
+        "importHelpers": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "verbatimModuleSyntax": true,
+        "skipLibCheck": true
+    },
     "include": [
-        "src/**/*.ts"
+        "src"
     ],
     "exclude": [
-        "node_modules", 
-        "build", 
-        "dist", 
-        "lib", 
-        "playground"
-    ],
-    "compilerOptions": {
-        "lib": ["es6", "dom", "ES2020.BigInt"],
-        "moduleResolution": "Node",
-        "module": "ES2015",
-        "target": "ES2015",
-        "noImplicitAny": true,
-        "sourceMap": false,
-        "outDir": "build",
-        "rootDir": "src"
-    }
+        "docs",
+        "dist"
+    ]
 }
